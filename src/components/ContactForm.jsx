@@ -93,12 +93,14 @@ const ContactForm = () => {
             <button type = "submit" className= "bg-black text-white px-6 py-2 rounded">
               Submit
             </button>
-          </div>
-          <div className="mt-4 text-left">
+            <div className="mt-4 text-left space-y-2">
   <p><strong>Name:</strong> {name}</p>
   <p><strong>Email:</strong> {email}</p>
   <p><strong>Message:</strong> {text}</p>
 </div>
+
+</div>
+ 
         </form>
 
       </div>
