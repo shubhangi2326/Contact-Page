@@ -1,65 +1,21 @@
-// import React from "react";
-// import { MdMessage } from "react-icons/md";
-// import { IoCall } from "react-icons/io5";
-// const ContactForm = () => {
-//   return (
-//     <>
-//       <div className="flex flex-col md:flex-row  min-h-screen justify-center items-center md:w-full w-[50%]">
-//         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
-//           <div className="flex flex-wrap gap-2 p-2">
-//             <button className="bg-zinc-950 text-white px-5 py-3 flex justify-center items-center gap-2 rounded">
-//               <MdMessage /> VIA SUPPORT CHAT VIA
-//             </button>
-//             <button className="bg-zinc-950 text-white  ms-2 px-5 flex justify-center items-center gap-2 rounded">
-//               <IoCall />
-//               VIA CALL
-//             </button>
-           
-//           </div>
-//           <button className=" text-black  border border-black ms-2 px-5 flex justify-center items-center gap-2 rounded w-[40%] py-3">
-//           <MdMessage />       
-//                  VIA EMAIL FORM
-//             </button>
-//             <form className="w-[50%] pt-3">
-                
-//                   <div className="relative flex p-2 w-[20%]bg-blue-500">
-//                         <label htmlFor="name" className="absolute top-0 left-[30px] bg-white" >Name</label>
-//                     <input type="text"  placeholder="Enter Name" className="border border-black h-[48px] p-[8px] w-[100%] "/>
-//                   </div>
-                 
-//                   <div className="relative flex    p-2 w-[20%]bg-blue-500">
-//                         <label htmlFor="name" className="absolute top-0 left-[30px] bg-white" >Email</label>
-//                     <input type="text"  placeholder="Enter Email" className="border border-black h-[48px] p-[8px] w-[100%] "/>
-//                   </div>
-                  
-//                   <div className="relative flex    p-2 w-[20%]bg-blue-500">
-//                         <label htmlFor="name" className="absolute top-0 left-[30px] bg-white" >Text</label>
-//                     <textarea type="text"  placeholder="Enter Text" className="border border-black h-[48px] p-[8px] w-[100%] "/>
-//                   </div>
 
-//                   <div className="flex justify-end ">
-//                   <button className=" bg-black text-white py-2 px-4 p-3 rounded">     
-//                 Submit
-//             </button>
-//                   </div>
-//             </form> 
-//         </div>
-//         <div className="w-[50%] flex justify-center items-center">
-//             <img src="/images/contact.svg" className="p-4" alt="" />
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default ContactForm;
-
-
-import React from "react";
+import React, { useState } from "react";
 import { MdMessage } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
 
 const ContactForm = () => {
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [text,setText]=useState("");
+
+  const onSubmit = (event)=>{
+    event.preventDefault();
+
+    setName(event.target[0].value);
+    setEmail(event.target[1].value);
+    setText(event.target[2].value);
+
+  }
   return (
     <div className="flex flex-col md:flex-row w-full min-h-screen items-center justify-center px-4">
       
@@ -84,7 +40,7 @@ const ContactForm = () => {
         </button>
 
         {/* FORM */}
-        <form className="w-full max-w-md px-4">
+        <form className="w-full max-w-md px-4" onSubmit={onSubmit}>
           {/* NAME FIELD */}
           <div className="relative flex flex-col mb-4">
             <label
@@ -134,11 +90,15 @@ const ContactForm = () => {
 
           {/* SUBMIT BUTTON */}
           <div className="flex justify-end">
-            <button className="bg-black text-white px-6 py-2 rounded">
+            <button type = "submit" className= "bg-black text-white px-6 py-2 rounded">
               Submit
             </button>
           </div>
+          <div>{name + " "
+          + email + "  " 
+          + text}</div>
         </form>
+
       </div>
 
       {/* RIGHT SECTION - IMAGE */}
