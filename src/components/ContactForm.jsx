@@ -94,9 +94,11 @@ const ContactForm = () => {
               Submit
             </button>
           </div>
-          <div>{name + " "
-          + email + "  " 
-          + text}</div>
+          <div className="mt-4 text-left">
+  <p><strong>Name:</strong> {name}</p>
+  <p><strong>Email:</strong> {email}</p>
+  <p><strong>Message:</strong> {text}</p>
+</div>
         </form>
 
       </div>
